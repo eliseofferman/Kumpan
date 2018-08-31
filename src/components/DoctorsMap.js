@@ -7,19 +7,24 @@ import DoctorMarker from "./DoctorMarker";
 
 const DoctorsMap = withGoogleMap((props) =>{
 
-  const markers = (props.doctors || []).map( doctor => <DoctorMarker
-    key={doctor.uid}
-    doctor={doctor}
-    location={{lat: doctor.closestPractice.lat, lng: doctor.closestPractice.lon}}
+  const markers = (props.markers || []).map( (marker, index) => <Marker
+
+    // {...marker}
+    key={index}
+    onClick={props.onMarkerClick}
+    // onRightClick={() => props.onMarkerClick(marker)}
+    // doctor={doctor}
+    position={{lat: marker.position.lat, lng: marker.position.lng}}
                                                        />);
 
   return (
       <GoogleMap
         defaultZoom={11}
         center={ { lat:  42.3601, lng: -71.0589 } }
+        onClick={props.onClickMap}
       >
-        {/* {markers} */}
-        <Marker position={{ lat: 42.3601, lng: -71.0589 }}  onClick={props.onMarkerClick}/>
+        {markers}
+        {/* <Marker position={{ lat: 42.3601, lng: -71.0589 }}  onClick={props.onMarkerClick}/> */}
 
       </GoogleMap>
     );
