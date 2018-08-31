@@ -5,14 +5,18 @@ import DoctorsMap from "./DoctorsMap";
 
 export default class DoctorMapContainer extends React.Component {
 
+onMarkerClick = () => {
+  console.log("Marker Clicked");
+}
 	render() {
 		return (
-			<DoctorsMap
-				doctors={this.props.doctors}
-				loadingElement={<div style={{ height: `100%` }} />}
-				containerElement={<div style={{ height: `600px`, width: `600px` }} />}
-				mapElement={<div style={{ height: `100%` }} />}
-			/>
+      <div style={{height:"100%"}}>
+        <DoctorsMap
+          containerElement={<div style={{ height: `600px`, width: `600px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          onMarkerClick={this.onMarkerClick}
+        />
+      </div>
 		);
 	}
 }

@@ -11,14 +11,15 @@ const DoctorsMap = withGoogleMap((props) =>{
     key={doctor.uid}
     doctor={doctor}
     location={{lat: doctor.closestPractice.lat, lng: doctor.closestPractice.lon}}
-                                               />);
+                                                       />);
 
   return (
       <GoogleMap
         defaultZoom={11}
-        center={ { lat:  50.087, lng: 14.421 } }
+        center={ { lat:  42.3601, lng: -71.0589 } }
       >
-        {markers}
+        {/* {markers} */}
+        <Marker position={{ lat: 42.3601, lng: -71.0589 }}  onClick={props.onMarkerClick}/>
 
       </GoogleMap>
     );
