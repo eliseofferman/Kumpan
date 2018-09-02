@@ -2,6 +2,7 @@
 
 import React from "react";
 import DoctorsMap from "./DoctorsMap";
+import List from "./List";
 
 export default class DoctorMapContainer extends React.Component {
 
@@ -29,7 +30,7 @@ onClickMap = (e) => {
   newMarker.push({position:{
     lat: e.latLng.lat(),
     lng: e.latLng.lng(),
-  }})
+  }, name: "Elise"})
   this.setState({
         markers: newMarker
   })
@@ -46,14 +47,17 @@ onClickMap = (e) => {
 	render() {
     // console.log(this.state.markers);
 		return (
-      <div style={{height:"100%"}}>
-        <DoctorsMap
-          containerElement={<div style={{ height: `600px`, width: `600px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          onMarkerClick={this.onMarkerClick}
-          onClickMap={this.onClickMap}
-          markers={this.state.markers}
-        />
+      <div style={{width:"100%", height: `100%`}}>
+        <div style={{width:"70%", height: `100%`}}>
+          <DoctorsMap
+            containerElement={<div style={{ height: `700px`, width: `100%` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            onMarkerClick={this.onMarkerClick}
+            onClickMap={this.onClickMap}
+            markers={this.state.markers}
+          />
+        </div>
+        <List listItems={this.state.markers}/>
       </div>
 		);
 	}
