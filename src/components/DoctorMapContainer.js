@@ -80,6 +80,10 @@ handleOnChangePlace = (event) => {
     })
 }
 
+itemZoom = () => {
+  console.log("hej");
+}
+
 	render() {
     // console.log(this.state.markers);
 		return (
@@ -101,7 +105,7 @@ handleOnChangePlace = (event) => {
             id={this.state.id}
           />
         </div>
-        {/* <List listItems={this.state.markers}/> */}
+        <List listItems={this.state.savedMarkers} itemZoom={this.itemZoom}/>
       </div>
 		);
 	}

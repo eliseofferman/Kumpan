@@ -7,7 +7,7 @@ export default class List extends React.Component {
     return(
       <div>
         {this.props.listItems.map((item, index) => {
-          return <ListItem key={index} item= {item}/>
+          return <ListItem key={index} item= {item} itemZoom={this.props.itemZoom}/>
         })}
       </div>
     );
