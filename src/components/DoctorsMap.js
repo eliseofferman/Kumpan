@@ -9,16 +9,17 @@ const DoctorsMap = withGoogleMap((props) => {
 
   const markers = (props.savedMarkers || []).map( (marker, index) => <Marker
     key={index}
-    onClick={props.onMarkerClick}
+    // onClick={props.onMarkerClick (index)}
+    onClick={()=> props.onMarkerClick (index)}
     position={{lat: marker.position.lat, lng: marker.position.lng}}>
 
-    { props.showMarker  ?
+    { props.showMarker && index === props.id ?
       (<InfoWindow >
         <h4>{marker.name}</h4>
       </InfoWindow>
       ) : null
     }
-
+    
   </Marker>);
 
 

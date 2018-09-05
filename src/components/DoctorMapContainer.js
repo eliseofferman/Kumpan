@@ -11,7 +11,7 @@ state = {
   newPlace: '', //name for new place
   savedMarkers: [],
   showMarker:false,
-  // id:null,
+  id:null,
   // position:{
   //         lat: 42.3601,
   //         lng: -71.0589,
@@ -66,11 +66,11 @@ saveMarker = (name, coordinates) => {
   console.log(this.state.savedMarkers);
 }
 
-onMarkerClick = () => {
-  // console.log(id);
+onMarkerClick = (id) => {
+  console.log(id);
   this.setState({
     showMarker: true,
-    // id:id,
+    id:id,
   })
 }
 
@@ -98,7 +98,7 @@ handleOnChangePlace = (event) => {
             newPlace={this.state.newPlace}
             handleOnChangePlace={this.handleOnChangePlace}
             showMarker={this.state.showMarker}
-            // id={this.state.id}
+            id={this.state.id}
           />
         </div>
         {/* <List listItems={this.state.markers}/> */}
