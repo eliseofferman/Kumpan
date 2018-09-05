@@ -7,42 +7,78 @@ import List from "./List";
 export default class DoctorMapContainer extends React.Component {
 
 state = {
-  markers:[
-    // {
-    //     position:{
-    //       lat: 42.3601,
-    //       lng: -71.0589,
-    //     },
-    //   }
-    ]
+  newMarker: false, //determens if new marker is vissibel or not
+  newPlace: '', //name for new place
+  savedMarkers: [],
+  showMarker:false,
+  // id:null,
+  // position:{
+  //         lat: 42.3601,
+  //         lng: -71.0589,
+  //       },
+  // markers:[
+  //   {
+  //       position:{
+  //         lat: 42.3601,
+  //         lng: -71.0589,
+  //       },
+  //     }
+  //   ]
+}
+
+onClickMap = (e) => { //adds a new marker on the map
+  this.setState({
+    newMarker: true,
+    newMarkerPosition:{
+       lat: e.latLng.lat(),
+       lng: e.latLng.lng(),
+     }
+  })
+}
+
+onNewMarkerClick = () => { // hids the new marker
+  this.setState({
+    newMarker: false,
+  })
+}
+
+handleSubmit = () => {  //saves the new marker in to permenents markers
+  console.log("handleSubmit");
+  this.saveMarker(this.state.newPlace, this.state.newMarkerPosition)
+  this.setState({
+    newMarker: false,
+    newPlace: '',
+  })
+}
+
+saveMarker = (name, coordinates) => {
+  const markers = this.state.savedMarkers;
+  markers.push({
+    position:{
+      lat: coordinates.lat,
+      lng: coordinates.lng,
+    },
+    name: name
+  })
+  this.setState({
+        savedMarkers: markers
+  })
+  console.log(this.state.savedMarkers);
 }
 
 onMarkerClick = () => {
-  console.log("Marker Clicked");
-  const newMarker = this.state.markers
-  newMarker.push()
-}
-
-onClickMap = (e) => {
-  console.log(this.state.markers);
-  console.log("Clicked map,", e.latLng.lat, e.latLng.lng);
-  const newMarker = this.state.markers;
-  newMarker.push({position:{
-    lat: e.latLng.lat(),
-    lng: e.latLng.lng(),
-  }, name: "Elise"})
+  // console.log(id);
   this.setState({
-        markers: newMarker
+    showMarker: true,
+    // id:id,
   })
-  console.log(this.state.markers);
 }
 
-// const allActivities = this.state.activities
-//     allActivities.push({ id: Date.now(), title: activity, days: [0, 0, 0, 0, 0, 0, 0] })
-//
-//     this.setState({
-//       activities: allActivities
-//     })
+handleOnChangePlace = (event) => {
+  this.setState ({
+      newPlace: event.target.value
+    })
+}
 
 	render() {
     // console.log(this.state.markers);
@@ -54,10 +90,18 @@ onClickMap = (e) => {
             mapElement={<div style={{ height: `100%` }} />}
             onMarkerClick={this.onMarkerClick}
             onClickMap={this.onClickMap}
-            markers={this.state.markers}
+            savedMarkers={this.state.savedMarkers}
+            newMarker={this.state.newMarker}
+            newMarkerPosition={this.state.newMarkerPosition}
+            handleSubmit={this.handleSubmit}
+            onNewMarkerClick={this.onNewMarkerClick}
+            newPlace={this.state.newPlace}
+            handleOnChangePlace={this.handleOnChangePlace}
+            showMarker={this.state.showMarker}
+            // id={this.state.id}
           />
         </div>
-        <List listItems={this.state.markers}/>
+        {/* <List listItems={this.state.markers}/> */}
       </div>
 		);
 	}

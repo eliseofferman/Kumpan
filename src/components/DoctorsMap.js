@@ -7,16 +7,20 @@ import DoctorMarker from "./DoctorMarker";
 
 const DoctorsMap = withGoogleMap((props) => {
 
-  const markers = (props.markers || []).map( (marker, index) => <Marker
+  const markers = (props.savedMarkers || []).map( (marker, index) => <Marker
     key={index}
     onClick={props.onMarkerClick}
     position={{lat: marker.position.lat, lng: marker.position.lng}}>
-    <InfoWindow >
-      <form>
-        <input type="text"/>
-      </form>
-    </InfoWindow>
+
+    { props.showMarker  ?
+      (<InfoWindow >
+        <h4>{marker.name}</h4>
+      </InfoWindow>
+      ) : null
+    }
+
   </Marker>);
+
 
   return (
       <GoogleMap
@@ -25,6 +29,26 @@ const DoctorsMap = withGoogleMap((props) => {
         onClick={props.onClickMap}
       >
         {markers}
+
+        {props.newMarker ?
+          ( <Marker
+            onClick={props.onNewMarkerClick}
+            position={{lat: props.newMarkerPosition.lat, lng: props.newMarkerPosition.lng}}>>
+            <InfoWindow >
+              <form onSubmit={props.handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Name of new place"
+                  value={props.newPlace}
+                  onChange={props.handleOnChangePlace}/>
+                <button>Save</button>
+              </form>
+            </InfoWindow>
+          </Marker>
+          ) : null
+        }
+
+
 
       </GoogleMap>
     );
