@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export default class ListItem extends React.Component {
 
   render(){
@@ -10,7 +9,7 @@ export default class ListItem extends React.Component {
           🤟 {this.props.item.name}
         </div>
         <div onClick={()=> this.props.deleteItem(this.props.id)} className="delete">
-          🗑 
+          🗑
         </div>
       </li>
     );

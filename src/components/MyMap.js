@@ -1,6 +1,3 @@
-
-// DoctorsMap.js
-
 import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 
@@ -18,7 +15,6 @@ const MyMap = withGoogleMap((props) => {
       </InfoWindow>
       ) : null
     }
-
   </Marker>);
 
 

@@ -7,8 +7,8 @@ export default class List extends React.Component {
     const listItems = this.props.listItems;
     return(
     <div>
-      {listItems[0] ? (
-        <ul>
+      {listItems[0] ?
+        ( <ul>
           {this.props.listItems.map((item, index) => {
             return <ListItem
               key={index}
@@ -16,9 +16,8 @@ export default class List extends React.Component {
               item= {item}
               itemZoom={this.props.itemZoom} deleteItem={this.props.deleteItem}/>
           })}
-        </ul>
-      ) : (<h4>Start your list by clicking on the map and hit save</h4>)
-
+        </ul> ) :
+        (<h4>Start your list by clicking on the map and hit save</h4>)
       }
     </div>
 

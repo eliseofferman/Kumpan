@@ -1,5 +1,3 @@
-// DoctorMapContainer.js
-
 import React from "react";
 import MyMap from "./MyMap";
 import List from "./List";
@@ -16,14 +14,6 @@ state = {
           lat: 59.334591,
           lng: 18.063240,
         },
-  // markers:[
-  //   {
-  //       position:{
-  //         lat: 42.3601,
-  //         lng: -71.0589,
-  //       },
-  //     }
-  //   ]
 }
 
 onClickMap = (e) => { //adds a new marker on the map
@@ -43,7 +33,6 @@ onNewMarkerClick = () => { // hids the new marker
 }
 
 handleSubmit = () => {  //saves the new marker in to permenents markers
-  console.log("handleSubmit");
   this.saveMarker(this.state.newPlace, this.state.newMarkerPosition)
   this.setState({
     newMarker: false,
@@ -61,13 +50,11 @@ saveMarker = (name, coordinates) => { // saves the new marker to the permenet ma
     name: name
   })
   this.setState({
-        savedMarkers: markers
+    savedMarkers: markers
   })
-  console.log(this.state.savedMarkers);
 }
 
 onMarkerClick = (id) => { // shows the clicked marker
-  console.log(id);
   this.setState({
     showMarker: true,
     id:id,
@@ -81,7 +68,6 @@ handleOnChangePlace = (event) => {
 }
 
 itemZoom = (id, position) => {  // when a places in the list is clicked the map centers to the connected marker
-  console.log("hej", id, position);
   this.setState({
     showMarker: true,
     id:id,
@@ -93,7 +79,6 @@ itemZoom = (id, position) => {  // when a places in the list is clicked the map 
 }
 
 deleteItem = (id) => { // delets a item/marker
-  console.log("delete", id);
   const allMarkers = this.state.savedMarkers
     allMarkers.splice(id, 1)
     this.setState({
@@ -102,7 +87,6 @@ deleteItem = (id) => { // delets a item/marker
 }
 
 	render() {
-    // console.log(this.state.markers);
 		return (
       <div className="mainContainer">
         <div  className="mapContainer">
