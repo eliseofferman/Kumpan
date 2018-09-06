@@ -1,12 +1,12 @@
 import React from "react"
-import DoctorMapContainer from "./DoctorMapContainer";
+import MapContainer from "./MapContainer";
 
 class App extends React.Component {
 
   render() {
     return (
       <div>
-        <DoctorMapContainer/>
+        <MapContainer/>
       </div>
     )
   }

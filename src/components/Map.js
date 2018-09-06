@@ -3,9 +3,8 @@
 
 import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
-import DoctorMarker from "./DoctorMarker";
 
-const DoctorsMap = withGoogleMap((props) => {
+const Map = withGoogleMap((props) => {
 
   const markers = (props.savedMarkers || []).map( (marker, index) => <Marker
     key={index}
@@ -19,7 +18,7 @@ const DoctorsMap = withGoogleMap((props) => {
       </InfoWindow>
       ) : null
     }
-    
+
   </Marker>);
 
 
@@ -56,4 +55,4 @@ const DoctorsMap = withGoogleMap((props) => {
   }
 )
 
-export default DoctorsMap;
+export default Map;

@@ -1,10 +1,10 @@
 // DoctorMapContainer.js
 
 import React from "react";
-import DoctorsMap from "./DoctorsMap";
+import Map from "./Map";
 import List from "./List";
 
-export default class DoctorMapContainer extends React.Component {
+export default class MapContainer extends React.Component {
 
 state = {
   newMarker: false, //determens if new marker is vissibel or not
@@ -89,7 +89,7 @@ itemZoom = () => {
 		return (
       <div style={{width:"100%", height: `100%`}}>
         <div style={{width:"70%", height: `100%`}}>
-          <DoctorsMap
+          <Map
             containerElement={<div style={{ height: `700px`, width: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             onMarkerClick={this.onMarkerClick}
