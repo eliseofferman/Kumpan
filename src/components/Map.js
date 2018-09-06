@@ -8,7 +8,6 @@ const Map = withGoogleMap((props) => {
 
   const markers = (props.savedMarkers || []).map( (marker, index) => <Marker
     key={index}
-    // onClick={props.onMarkerClick (index)}
     onClick={()=> props.onMarkerClick (index)}
     position={{lat: marker.position.lat, lng: marker.position.lng}}>
 
@@ -25,7 +24,7 @@ const Map = withGoogleMap((props) => {
   return (
       <GoogleMap
         defaultZoom={11}
-        center={ { lat:  42.3601, lng: -71.0589 } }
+        center={ { lat:  props.centerPosition.lat, lng: props.centerPosition.lng } }
         onClick={props.onClickMap}
       >
         {markers}
@@ -47,9 +46,6 @@ const Map = withGoogleMap((props) => {
           </Marker>
           ) : null
         }
-
-
-
       </GoogleMap>
     );
   }

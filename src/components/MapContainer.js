@@ -12,10 +12,10 @@ state = {
   savedMarkers: [],
   showMarker:false,
   id:null,
-  // position:{
-  //         lat: 42.3601,
-  //         lng: -71.0589,
-  //       },
+  centerPosition:{
+          lat: 59.334591,
+          lng: 18.063240,
+        },
   // markers:[
   //   {
   //       position:{
@@ -84,6 +84,15 @@ itemZoom = () => {
   console.log("hej");
 }
 
+deleteItem = (id) => {
+  console.log("delete", id);
+  const allMarkers = this.state.savedMarkers
+    allMarkers.splice(id, 1)
+    this.setState({
+      savedMarkers: allMarkers
+    })
+}
+
 	render() {
     // console.log(this.state.markers);
 		return (
@@ -103,11 +112,14 @@ itemZoom = () => {
             handleOnChangePlace={this.handleOnChangePlace}
             showMarker={this.state.showMarker}
             id={this.state.id}
+            centerPosition={this.state.centerPosition}
           />
         </div>
         <div className="listContainer">
-          <h1>Plases of Stockholm</h1>
-          <List listItems={this.state.savedMarkers} itemZoom={this.itemZoom}/>
+          <h1>Places of Stockholm</h1>
+          <List
+            listItems={this.state.savedMarkers} itemZoom={this.itemZoom}
+            deleteItem ={this.deleteItem}/>
         </div>
       </div>
 		);
