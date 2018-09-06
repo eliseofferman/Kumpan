@@ -4,9 +4,10 @@
 import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 
-const Map = withGoogleMap((props) => {
+const MyMap = withGoogleMap((props) => {
 
-  const markers = (props.savedMarkers || []).map( (marker, index) => <Marker
+  const markers = (props.savedMarkers || []).map( (marker, index) =>
+  <Marker
     key={index}
     onClick={()=> props.onMarkerClick (index)}
     position={{lat: marker.position.lat, lng: marker.position.lng}}>
@@ -51,4 +52,4 @@ const Map = withGoogleMap((props) => {
   }
 )
 
-export default Map;
+export default MyMap;

@@ -6,8 +6,12 @@ export default class ListItem extends React.Component {
   render(){
     return(
       <li>
-        <div onClick={this.props.itemZoom}> 🤟 {this.props.item.name} </div>
-        <div onClick={()=> this.props.deleteItem(this.props.id)} className="delete"> 🗑 </div>
+        <div onClick={()=> this.props.itemZoom(this.props.id, this.props.item.position)}>
+          🤟 {this.props.item.name}
+        </div>
+        <div onClick={()=> this.props.deleteItem(this.props.id)} className="delete">
+          🗑 
+        </div>
       </li>
     );
   }

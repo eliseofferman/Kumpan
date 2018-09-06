@@ -1,7 +1,7 @@
 // DoctorMapContainer.js
 
 import React from "react";
-import Map from "./Map";
+import MyMap from "./MyMap";
 import List from "./List";
 
 export default class MapContainer extends React.Component {
@@ -38,7 +38,7 @@ onClickMap = (e) => { //adds a new marker on the map
 
 onNewMarkerClick = () => { // hids the new marker
   this.setState({
-    newMarker: false,
+    newMarker: !this.state.newMarker,
   })
 }
 
@@ -51,7 +51,7 @@ handleSubmit = () => {  //saves the new marker in to permenents markers
   })
 }
 
-saveMarker = (name, coordinates) => {
+saveMarker = (name, coordinates) => { // saves the new marker to the permenet markers
   const markers = this.state.savedMarkers;
   markers.push({
     position:{
@@ -66,7 +66,7 @@ saveMarker = (name, coordinates) => {
   console.log(this.state.savedMarkers);
 }
 
-onMarkerClick = (id) => {
+onMarkerClick = (id) => { // shows the clicked marker
   console.log(id);
   this.setState({
     showMarker: true,
@@ -76,15 +76,23 @@ onMarkerClick = (id) => {
 
 handleOnChangePlace = (event) => {
   this.setState ({
-      newPlace: event.target.value
-    })
+    newPlace: event.target.value
+  })
 }
 
-itemZoom = () => {
-  console.log("hej");
+itemZoom = (id, position) => {  // when a places in the list is clicked the map centers to the connected marker
+  console.log("hej", id, position);
+  this.setState({
+    showMarker: true,
+    id:id,
+    centerPosition:{
+      lat: position.lat,
+      lng: position.lng,
+    }
+  })
 }
 
-deleteItem = (id) => {
+deleteItem = (id) => { // delets a item/marker
   console.log("delete", id);
   const allMarkers = this.state.savedMarkers
     allMarkers.splice(id, 1)
@@ -98,7 +106,7 @@ deleteItem = (id) => {
 		return (
       <div className="mainContainer">
         <div  className="mapContainer">
-          <Map
+          <MyMap
             containerElement={<div style={{ height: `100vh`, width: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             onMarkerClick={this.onMarkerClick}
