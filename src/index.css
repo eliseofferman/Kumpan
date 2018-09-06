@@ -2,4 +2,34 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.mainContainer {
+  display: flex;
+}
+
+.listContainer {
+  padding: 30px;
+  background: #aadaff;
+}
+
+
+.mapContainer {
+  width: 60%;
+}
+
+
+li {
+  list-style-type: none;
+  border-bottom: 2px solid white;
+  padding: 5px 0px;
+}
+
+ul {
+  padding: 0;
+}
+
+h1,li,h4 {
+  color: white;
 }

@@ -87,10 +87,10 @@ itemZoom = () => {
 	render() {
     // console.log(this.state.markers);
 		return (
-      <div style={{width:"100%", height: `100%`}}>
-        <div style={{width:"70%", height: `100%`}}>
+      <div className="mainContainer">
+        <div  className="mapContainer">
           <Map
-            containerElement={<div style={{ height: `700px`, width: `100%` }} />}
+            containerElement={<div style={{ height: `100vh`, width: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             onMarkerClick={this.onMarkerClick}
             onClickMap={this.onClickMap}
@@ -105,7 +105,10 @@ itemZoom = () => {
             id={this.state.id}
           />
         </div>
-        <List listItems={this.state.savedMarkers} itemZoom={this.itemZoom}/>
+        <div className="listContainer">
+          <h1>Plases of Stockholm</h1>
+          <List listItems={this.state.savedMarkers} itemZoom={this.itemZoom}/>
+        </div>
       </div>
 		);
 	}

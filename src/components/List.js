@@ -4,12 +4,20 @@ import ListItem from "./ListItem";
 export default class List extends React.Component {
 
   render(){
+    const listItems = this.props.listItems;
     return(
-      <div>
-        {this.props.listItems.map((item, index) => {
-          return <ListItem key={index} item= {item} itemZoom={this.props.itemZoom}/>
-        })}
-      </div>
+    <div>
+      {listItems[0] ? (
+        <ul>
+          {this.props.listItems.map((item, index) => {
+            return <ListItem key={index} item= {item} itemZoom={this.props.itemZoom}/>
+          })}
+        </ul>
+      ) : (<h4>Start your list by clicking on the map and hit save</h4>)
+        
+      }
+    </div>
+
     );
   }
 }
