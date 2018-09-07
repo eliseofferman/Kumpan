@@ -5,15 +5,16 @@ import List from "./List";
 export default class MapContainer extends React.Component {
 
 state = {
-  newMarker: false, //determens if new marker is vissibel or not
+  newMarker: false, //determine if new marker is visible or not
   newPlace: '', //name for new place
-  savedMarkers: [],
-  showMarker:false,
-  id:null,
-  centerPosition:{
+  savedMarkers: [],  // all the plases/markers that is saved in to a list
+  showMarker:false, //determine if InfoWindow for a permanent marker is visible or not
+  id:null,  // id for InfoWindow, to make a specific InfoWindow visseble
+  centerPosition:{  // the default coordinates for where the map is centered
           lat: 59.334591,
           lng: 18.063240,
         },
+  
 }
 
 onClickMap = (e) => { //adds a new marker on the map
@@ -26,13 +27,13 @@ onClickMap = (e) => { //adds a new marker on the map
   })
 }
 
-onNewMarkerClick = () => { // hids the new marker
+onNewMarkerClick = () => { // hiding a new marker when it is clicked
   this.setState({
     newMarker: !this.state.newMarker,
   })
 }
 
-handleSubmit = () => {  //saves the new marker in to permenents markers
+handleSubmit = () => {  //saves the new marker in to permanent markers
   this.saveMarker(this.state.newPlace, this.state.newMarkerPosition)
   this.setState({
     newMarker: false,
@@ -40,7 +41,7 @@ handleSubmit = () => {  //saves the new marker in to permenents markers
   })
 }
 
-saveMarker = (name, coordinates) => { // saves the new marker to the permenet markers
+saveMarker = (name, coordinates) => { // saves the new marker to the permanent markers
   const markers = this.state.savedMarkers;
   markers.push({
     position:{
@@ -54,20 +55,20 @@ saveMarker = (name, coordinates) => { // saves the new marker to the permenet ma
   })
 }
 
-onMarkerClick = (id) => { // shows the clicked marker
+onMarkerClick = (id) => { // shows InfoWindow of the clicked marker
   this.setState({
     showMarker: true,
     id:id,
   })
 }
 
-handleOnChangePlace = (event) => {
+handleOnChangePlace = (event) => {  // saves the entered name of new place in to state new Place
   this.setState ({
     newPlace: event.target.value
   })
 }
 
-itemZoom = (id, position) => {  // when a places in the list is clicked the map centers to the connected marker
+itemZoom = (id, position) => {  // when a name in the place list is clicked, the map gets centers at the connected marker
   this.setState({
     showMarker: true,
     id:id,
@@ -78,7 +79,7 @@ itemZoom = (id, position) => {  // when a places in the list is clicked the map 
   })
 }
 
-deleteItem = (id) => { // delets a item/marker
+deleteItem = (id) => { // delete a item/marker
   const allMarkers = this.state.savedMarkers
     allMarkers.splice(id, 1)
     this.setState({
@@ -90,7 +91,7 @@ deleteItem = (id) => { // delets a item/marker
 		return (
       <div className="mainContainer">
         <div  className="mapContainer">
-          <MyMap
+          <MyMap // renders the map and added markers
             containerElement={<div style={{ height: `100vh`, width: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             onMarkerClick={this.onMarkerClick}
@@ -109,7 +110,7 @@ deleteItem = (id) => { // delets a item/marker
         </div>
         <div className="listContainer">
           <h1>My places of Stockholm</h1>
-          <List
+          <List  // renders the list of all the added markers
             listItems={this.state.savedMarkers} itemZoom={this.itemZoom}
             deleteItem ={this.deleteItem}/>
         </div>
