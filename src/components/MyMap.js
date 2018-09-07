@@ -11,7 +11,7 @@ const MyMap = withGoogleMap((props) => {
 
     { props.showMarker && index === props.id ?
       (<InfoWindow >
-        <h4>{marker.name}</h4>
+        <h4 className="placeName">{marker.name}</h4>
       </InfoWindow>
       ) : null
     }
@@ -30,9 +30,10 @@ const MyMap = withGoogleMap((props) => {
           ( <Marker
             onClick={props.onNewMarkerClick}
             position={{lat: props.newMarkerPosition.lat, lng: props.newMarkerPosition.lng}}>>
-            <InfoWindow >
+            <InfoWindow className="info">
               <form onSubmit={props.handleSubmit}>
                 <input
+                  className="input"
                   type="text"
                   placeholder="Name of new place"
                   value={props.newPlace}

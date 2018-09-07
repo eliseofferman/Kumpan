@@ -108,7 +108,7 @@ deleteItem = (id) => { // delets a item/marker
           />
         </div>
         <div className="listContainer">
-          <h1>Places of Stockholm</h1>
+          <h1>My places of Stockholm</h1>
           <List
             listItems={this.state.savedMarkers} itemZoom={this.itemZoom}
             deleteItem ={this.deleteItem}/>

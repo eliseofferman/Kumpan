@@ -12,10 +12,11 @@ body {
 .listContainer {
   padding: 30px;
   background: #aadaff;
+  width: 30%;
 }
 
 .mapContainer {
-  width: 60%;
+  width: 70%;
 }
 
 li {
@@ -34,6 +35,32 @@ ul {
 h1,li {
   color: white;
   text-transform: uppercase;
+}
+.placeName {
+  margin: 2px 0px;
+  color: #3c8474;
+  text-transform: capitalize;
+}
+
+button {
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #aadaff;
+  font-size: 12px;
+  margin-left: 20px;
+}
+
+input{
+    border: none;
+    border-radius: 3px;
+    background-color: #ebece8;
+}
+
+.input{
+  font-size: 12px;
+  padding: 5px;
 }
 
 .delete {
