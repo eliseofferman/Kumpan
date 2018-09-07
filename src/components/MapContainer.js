@@ -14,7 +14,7 @@ state = {
           lat: 59.334591,
           lng: 18.063240,
         },
-  
+  newMarkerPosition: null, // cordinates to new marker
 }
 
 onClickMap = (e) => { //adds a new marker on the map
